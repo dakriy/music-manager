@@ -11,8 +11,11 @@ from bs4 import BeautifulSoup
 
 
 def get_soup(url, header):
-	r = requests.get(url=url, headers=header).content.decode('latin-1')
-	return BeautifulSoup(r, 'html.parser')
+	try:
+		r = requests.get(url=url, headers=header).content.decode('latin-1')
+		return BeautifulSoup(r, 'html.parser')
+	except Exception:
+		return None
 
 
 def random_string(string_length=10):
@@ -68,6 +71,10 @@ header = {
 		"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36"
 }
 soup = get_soup(url, header)
+
+if soup is None:
+	exit()
+
 ActualImages = []  # contains the link for Large original images, type of  image
 for a in soup.find_all("div", {"class": "rg_meta"}):
 	link, Type = json.loads(a.text)["ou"], json.loads(a.text)["ity"]
