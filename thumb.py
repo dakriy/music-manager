@@ -46,12 +46,12 @@ if 'tag' in status:
 				title = artist + ' ' + album + ' cover'
 				albumImage = True
 			else:
-				title = artist + ' ' + tag['title'] + ' cover'
+				title = artist + ' ' + tag['title']
 		else:
-			title = artist + ' ' + tag['title'] + ' cover'
+			title = artist + ' ' + tag['title']
 	else:
 		if 'title' in tag:
-			title = tag['title'] + ' cover'
+			title = tag['title']
 		else:
 			title = None
 else:
