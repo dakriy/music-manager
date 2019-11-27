@@ -127,7 +127,7 @@ path_prefix = pathlib.PosixPath('~/music').expanduser()
 if gui.album_txt:
 	path = path_prefix / gui.artist_txt / gui.album_txt
 else:
-	path = path_prefix / 'Singles' / gui.artist_txt
+	path = path_prefix / gui.artist_txt
 
 path = path.resolve()
 
