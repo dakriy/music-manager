@@ -89,7 +89,8 @@ pyautogui.hotkey('ctrl', 'c')
 url = root.clipboard_get()
 
 ydl_meta_opts = {
-	'socket_timeout': 1
+	'socket_timeout': 1,
+	'noplaylist': 1
 }
 with youtube_dl.YoutubeDL(ydl_meta_opts) as ydl:
 	ydl.add_default_info_extractors()
