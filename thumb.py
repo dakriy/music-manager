@@ -24,8 +24,12 @@ def random_string(string_length=10):
     return ''.join(random.choice(letters) for i in range(string_length))
 
 
-cmus = remote.PyCmus()
-status = cmus.get_status_dict()
+status = None
+try:
+    cmus = remote.PyCmus()
+    status = cmus.get_status_dict()
+except FileNotFoundError:
+    exit()
 
 cache_folder = pathlib.PosixPath("~/.music_art").expanduser().resolve()
 cache_file = cache_folder / 'cache.json'
