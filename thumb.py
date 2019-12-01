@@ -89,6 +89,9 @@ for a in soup.find_all("div", {"class": "rg_meta"}):
 
 for i, (img, Type) in enumerate(ActualImages[0:1]):
     img_data = requests.get(img, headers=header).content
+    # assume it's a jpg just cuase that's probably what it is... and linux is smart enough to figure it out
+    if not Type:
+        Type = 'jpg'
     if albumImage:
         img_file = pathlib.Path(status['file']).parent / ('downloaded_cover.' + Type)
         with open(img_file, 'wb') as f:
