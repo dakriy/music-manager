@@ -8,7 +8,6 @@ import urllib.parse
 from pycmus import remote
 import json
 from bs4 import BeautifulSoup
-import os
 
 
 def get_soup(url, header):
@@ -41,6 +40,7 @@ if status['file'] in cache:
 albumImage = False
 title = None
 try:
+    file = pathlib.Path(status['file']).stem
     if 'tag' in status:
         tag = status['tag']
         if 'artist' in tag and 'title' in tag:
@@ -56,7 +56,6 @@ try:
             else:
                 title = artist + ' ' + tag['title']
         else:
-            file = os.path.splitext(os.path.basename(status['file']))[0]
             if 'title' in tag:
                 title = tag['title']
             elif 'artist' in tag:
@@ -64,7 +63,7 @@ try:
             else:
                 title = file
     else:
-        title = os.path.splitext(os.path.basename(status['file']))[0]
+        title = file
 except Exception:
     exit()
 
