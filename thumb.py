@@ -8,6 +8,7 @@ import urllib.parse
 from pycmus import remote
 import json
 from bs4 import BeautifulSoup
+from bingscraper import bingscraper
 
 
 def get_soup(url, header):
@@ -74,6 +75,10 @@ except Exception:
 if title is None:
     exit()
 
+exit()
+'''
+imgs = bingscraper.scrape(title)
+
 image_type = "Action"
 query = urllib.parse.quote(title)
 url = "https://www.google.co.in/search?q=" + query + "&source=lnms&tbm=isch"
@@ -109,3 +114,4 @@ for i, (img, Type) in enumerate(ActualImages[0:1]):
         with open(str(cache_file), 'w') as f:
             json.dump(cache, f)
         print(name)
+'''
